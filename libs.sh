@@ -11,7 +11,7 @@ check_sheets() {
     echo "Number of questions found: $questions"
     echo 
     for i in $scripts; do
-        echo $i `diff $answer $i | grep -i ">" | wc -l | { read difference; echo $(($questions - $difference)); }`>> marks.txt # how to store $questions-(no. of difference)
+        echo $i `diff $answer $i | grep -i ">" | wc -l | { read difference; echo $(($questions - $difference)); }`>> marks.txt 
     done
     sed -i -e 's/\(answer_scripts[/]\|txt\)//g' marks.txt
 }
