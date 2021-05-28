@@ -18,6 +18,7 @@ menu() {
         read i
         case $i in
         "1")
+        rm -rf marks.txt
         check_sheets
         ;;
         "2")
@@ -39,3 +40,18 @@ menu() {
         esac
     done
 }
+
+echo "Checking answer script...."
+if [ ! -f $answer ]; then
+    echo "answer script doesn't exist.."
+    echo "Please include answer script."
+    sleep 2
+fi
+
+if [ ! -r $answer ]; then
+    echo "Error: $answer not readable"
+    sleep 2
+    exit 1
+fi
+echo "Answer script found."
+menu
